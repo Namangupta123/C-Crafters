@@ -476,6 +476,7 @@
 %token <str> T_AssignmentOperator  T_Semicolon T_identifier T_numericConstants T_stringLiteral
 %token <str> T_character T_plus T_minus T_mod T_divide T_multiply error
 %token <str> T_whiteSpace T_shortHand
+%token <str> T_float T_double T_char
 
 %left T_LogicalAnd T_LogicalOr
 %left T_less T_less_equal T_greater T_greater_equal T_equal_equal T_not_equal
