@@ -70,18 +70,19 @@
 
 	// Assignment Operations need a different TAC function as the operation performed is different
 	void TAC_assign()
-	{
-	    printf("%s = %s\n",st1[stop-2],st1[stop - 1]);
-	    Q[quadindex].op = (char*)malloc(sizeof(char));
-	    Q[quadindex].arg1 = (char*)malloc(sizeof(char)*strlen(st1[stop - 1]));
-	    Q[quadindex].arg2 = NULL;
-	    Q[quadindex].res = (char*)malloc(sizeof(char)*strlen(st1[stop-2]));
-	    strcpy(Q[quadindex].op,"=");
-	    strcpy(Q[quadindex].arg1,st1[stop - 1]);
-	    strcpy(Q[quadindex].res,st1[stop-2]);
-	    quadindex++;
-	    stop-=2;
-	}
+{
+    printf("%s = %s\n", st1[stop-2], st1[stop-1]);
+    Q[quadindex].op = (char*)malloc(sizeof(char));
+    Q[quadindex].arg1 = (char*)malloc(sizeof(char)*strlen(st1[stop-1]));
+    Q[quadindex].arg2 = NULL;
+    Q[quadindex].res = (char*)malloc(sizeof(char)*strlen(st1[stop-2]));
+    strcpy(Q[quadindex].op, "=");
+    strcpy(Q[quadindex].arg1, st1[stop-1]);
+    strcpy(Q[quadindex].res, st1[stop-2]);
+    quadindex++;
+    stop-=2;
+}
+
 
 	void TAC_assign_back()
 	{
@@ -470,13 +471,12 @@
 
 %define parse.error verbose
 
-%token <str> T_keyword T_int T_main T_type T_return T_for T_if T_else T_while T_InputStream T_OutputStream 
+%token <str> T_keyword T_int T_main T_type T_return T_for T_if T_else T_while T_InputStream T_OutputStream T_char T_double T_float
 %token <str> T_openParenthesis T_closedParanthesis T_openFlowerBracket T_closedFlowerBracket 
 %token <str> T_RelationalOperator T_LogicalOperator T_UnaryOperator 
 %token <str> T_AssignmentOperator  T_Semicolon T_identifier T_numericConstants T_stringLiteral
 %token <str> T_character T_plus T_minus T_mod T_divide T_multiply error
 %token <str> T_whiteSpace T_shortHand
-%token <str> T_float T_double T_char
 
 %left T_LogicalAnd T_LogicalOr
 %left T_less T_less_equal T_greater T_greater_equal T_equal_equal T_not_equal
@@ -496,7 +496,7 @@
 /*Flower brackets are mandatory for main*/
 
 
-Start : T_int T_main T_openParenthesis T_closedParanthesis openflower block_end_flower  	{$$ = $6;}	//openflower is T_openflowerBracket
+Start : T_int T_main T_openParenthesis T_closedParanthesis openflower block_end_flower 	{$$ = $6;}	//openflower is T_openflowerBracket
 
 
 /* This production assumes flower bracket has been opened*/
@@ -572,14 +572,21 @@ stmt_without_if : expr T_Semicolon										{$$ = $1;}
 					|for_stmt											{$$ = $1;}
 					;
 
-Assignment_stmt: 	idid T_AssignmentOperator expr											{push("=");TAC_assign();$$ = Construct_AST($1,$3,"=");}
-					| idid T_shortHand expr													{push("se");TAC_assign();$$ = Construct_AST($1,$3,"SE"); }
-					| T_type idid T_AssignmentOperator expr_without_constants   			{push("=");strcpy(G_val,$2->token);TAC_assign_back();insert_in_st($1, $2->token, st[top], "j");$$ = Construct_AST($2,$4,"=");}	
-					| T_type idid T_AssignmentOperator sc   {push("=");TAC_assign();insert_in_st($1, $2->token, st[top], $4->token);$$ = Construct_AST($2,$4,"=");}
-					| T_type idid T_AssignmentOperator nc   {push("=");TAC_assign();insert_in_st($1, $2->token, st[top], $4->token);$$ = Construct_AST($2,$4,"=");}
-					| T_int idid T_AssignmentOperator expr_without_constants    			{push("=");strcpy(G_val,$2->token);TAC_assign_back();insert_in_st($1, $2->token, st[top], "j");$$ = Construct_AST($2,$4,"=");}
-					| T_int idid T_AssignmentOperator nc    {push("=");TAC_assign();insert_in_st($1, $2->token, st[top], $4->token);$$ = Construct_AST($2,$4,"=");}
+Assignment_stmt: 	idid T_AssignmentOperator expr {push("=");TAC_assign();$$ = Construct_AST($1,$3,"=");}
+					| idid T_shortHand expr {push("se");TAC_assign();$$ = Construct_AST($1,$3,"SE"); }
+					| T_type idid T_AssignmentOperator expr_without_constants {push("=");strcpy(G_val,$2->token);TAC_assign_back();insert_in_st($1, $2->token, st[top], "j");$$ = Construct_AST($2,$4,"=");}	
+					| T_type idid T_AssignmentOperator sc {push("=");TAC_assign();insert_in_st($1, $2->token, st[top], $4->token);$$ = Construct_AST($2,$4,"=");}
+					| T_type idid T_AssignmentOperator nc {push("=");TAC_assign();insert_in_st($1, $2->token, st[top], $4->token);$$ = Construct_AST($2,$4,"=");}
+					| T_int idid T_AssignmentOperator expr_without_constants {push("=");strcpy(G_val,$2->token);TAC_assign_back();insert_in_st($1, $2->token, st[top], "j");$$ = Construct_AST($2,$4,"=");}
+					| T_int idid T_AssignmentOperator nc {push("=");TAC_assign();insert_in_st($1, $2->token, st[top], $4->token);$$ = Construct_AST($2,$4,"=");}
+					| T_float idid T_AssignmentOperator expr_without_constants {push("=");strcpy(G_val,$2->token);TAC_assign_back();insert_in_st($1, $2->token, st[top], "f");$$ = Construct_AST($2,$4,"=");}
+					| T_float idid T_AssignmentOperator nc {push("=");TAC_assign();insert_in_st($1, $2->token, st[top], $4->token);$$ = Construct_AST($2,$4,"=");}
+					| T_double idid T_AssignmentOperator expr_without_constants {push("=");strcpy(G_val,$2->token);TAC_assign_back();insert_in_st($1, $2->token, st[top], "d");$$ = Construct_AST($2,$4,"=");}
+					| T_double idid T_AssignmentOperator nc {push("=");TAC_assign();insert_in_st($1, $2->token, st[top], $4->token);$$ = Construct_AST($2,$4,"=");}
+					| T_char idid T_AssignmentOperator expr_without_constants {push("=");strcpy(G_val,$2->token);TAC_assign_back();insert_in_st($1, $2->token, st[top], "c");$$ = Construct_AST($2,$4,"=");}
+					| T_char idid T_AssignmentOperator sc {push("=");TAC_assign();insert_in_st($1, $2->token, st[top], $4->token);$$ = Construct_AST($2,$4,"=");}
 				;
+
 
 
 
@@ -667,49 +674,76 @@ void symboldisplay()
 
 int isDigit(char* in)
 {
-	for(int i = 0; i < strlen(in); ++i)
-	{
-		if(!isdigit(in[i])) return 0;
-	}
-	return 1;
+    int hasDecimal = 0;
+    for(int i = 0; i < strlen(in); ++i)
+    {
+        if(in[i] == '.' && !hasDecimal)
+            hasDecimal = 1;
+        else if(!isdigit(in[i]))
+            return 0;
+    }
+    return 1;
 }
+
 
 void icg_optimize()
 {
-	
-	for(int i = 0; i < quadindex; ++i)
-	{
-		if((strcmp(Q[i].op, "+") == 0 || strcmp(Q[i].op, "-") == 0 || strcmp(Q[i].op, "*") == 0 || strcmp(Q[i].op, "/") == 0
-		|| strcmp(Q[i].op, "%") == 0 || strcmp(Q[i].op, "&") == 0 || strcmp(Q[i].op, "|") == 0 || strcmp(Q[i].op, "^") == 0)
-		&& isDigit(Q[i].arg1) && isDigit(Q[i].arg2))
-		{
-			
-			int res;
-			if(strcmp(Q[i].op, "+") == 0)
-				res = atoi(Q[i].arg1) + atoi(Q[i].arg2);
-			else if(strcmp(Q[i].op, "-") == 0)
-				res = atoi(Q[i].arg1) - atoi(Q[i].arg2);
-			else if(strcmp(Q[i].op, "*") == 0)
-				res = atoi(Q[i].arg1) * atoi(Q[i].arg2);
-			else if(strcmp(Q[i].op, "/") == 0)
-				res = atoi(Q[i].arg1) / atoi(Q[i].arg2);
-			else if(strcmp(Q[i].op, "%") == 0)
-				res = atoi(Q[i].arg1) % atoi(Q[i].arg2);
-			else if(strcmp(Q[i].op, "&") == 0)
-				res = atoi(Q[i].arg1) & atoi(Q[i].arg2);
-			else if(strcmp(Q[i].op, "|") == 0)
-				res = atoi(Q[i].arg1) | atoi(Q[i].arg2);
-			else if(strcmp(Q[i].op, "^") == 0)
-				res = atoi(Q[i].arg1) ^ atoi(Q[i].arg2);
-
-			strcpy(Q[i].op, "=");
-			sprintf(Q[i].arg1, "%d", res);
-
-			Q[i].arg2 = NULL;
-
-		}
-	}
+    for(int i = 0; i < quadindex; ++i)
+    {
+        if((strcmp(Q[i].op, "+") == 0 || strcmp(Q[i].op, "-") == 0 || strcmp(Q[i].op, "*") == 0 || strcmp(Q[i].op, "/") == 0
+        || strcmp(Q[i].op, "%") == 0 || strcmp(Q[i].op, "&") == 0 || strcmp(Q[i].op, "|") == 0 || strcmp(Q[i].op, "^") == 0)
+        && isDigit(Q[i].arg1) && isDigit(Q[i].arg2))
+        {
+            // Check if either operand contains a decimal point
+            int isFloat = (strchr(Q[i].arg1, '.') != NULL || strchr(Q[i].arg2, '.') != NULL);
+            
+            if(isFloat) {
+                double res;
+                double arg1 = atof(Q[i].arg1);
+                double arg2 = atof(Q[i].arg2);
+                
+                if(strcmp(Q[i].op, "+") == 0)
+                    res = arg1 + arg2;
+                else if(strcmp(Q[i].op, "-") == 0)
+                    res = arg1 - arg2;
+                else if(strcmp(Q[i].op, "*") == 0)
+                    res = arg1 * arg2;
+                else if(strcmp(Q[i].op, "/") == 0)
+                    res = arg1 / arg2;
+                else
+                    continue; // Skip operations that don't make sense for floats
+                
+                strcpy(Q[i].op, "=");
+                sprintf(Q[i].arg1, "%f", res);
+            } else {
+                // Original integer code
+                int res;
+                if(strcmp(Q[i].op, "+") == 0)
+                    res = atoi(Q[i].arg1) + atoi(Q[i].arg2);
+                else if(strcmp(Q[i].op, "-") == 0)
+                    res = atoi(Q[i].arg1) - atoi(Q[i].arg2);
+                else if(strcmp(Q[i].op, "*") == 0)
+                    res = atoi(Q[i].arg1) * atoi(Q[i].arg2);
+                else if(strcmp(Q[i].op, "/") == 0)
+                    res = atoi(Q[i].arg1) / atoi(Q[i].arg2);
+                else if(strcmp(Q[i].op, "%") == 0)
+                    res = atoi(Q[i].arg1) % atoi(Q[i].arg2);
+                else if(strcmp(Q[i].op, "&") == 0)
+                    res = atoi(Q[i].arg1) & atoi(Q[i].arg2);
+                else if(strcmp(Q[i].op, "|") == 0)
+                    res = atoi(Q[i].arg1) | atoi(Q[i].arg2);
+                else if(strcmp(Q[i].op, "^") == 0)
+                    res = atoi(Q[i].arg1) ^ atoi(Q[i].arg2);
+                
+                strcpy(Q[i].op, "=");
+                sprintf(Q[i].arg1, "%d", res);
+            }
+            
+            Q[i].arg2 = NULL;
+        }
+    }
 }
+
 
 int main()
 {
