@@ -168,6 +168,12 @@ void insert_in_st(char* type, char* id, int scp, char* value)
 			Symbol_Table[scp].arr[i].storage = 4;
 			else if(strcmp(type, "long") == 0)
 			Symbol_Table[scp].arr[i].storage = 8;
+			else if(strcmp(type, "float") == 0)
+			Symbol_Table[scp].arr[i].storage = 4;
+			else if(strcmp(type, "double") == 0)
+			Symbol_Table[scp].arr[i].storage = 8;
+			else if(strcmp(type, "char") == 0)
+			Symbol_Table[scp].arr[i].storage = 1;
 		}
 	}
 }
