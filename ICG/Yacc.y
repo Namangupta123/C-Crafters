@@ -1,4 +1,3 @@
-
 %{
     #include <stdio.h>
     #include <stdlib.h>
@@ -753,6 +752,7 @@ int main()
         printf("Could not open output file, aborting\n");
         exit(1);
     }
+	// Display_tree(tree)
     yyparse();				//parse through the input. This step effectively also fills the symbol table, generates the AST and computes & prints ICG.
     
     printf("\n**************************************Symbol Table****************************************\n");
@@ -777,13 +777,10 @@ int main()
     }
     else
     {
-        fprintf(opt_file, "Optimized Intermediate Code Generation (Quadruple Form):\n");
-        fprintf(opt_file, "_______________________________________________________________________________________________________\n");
         for(int i=0; i<quadindex; i++)
         {
-            fprintf(opt_file, "%-8s \t %-8s \t %-8s \t %-6s \n", Q[i].op, Q[i].arg1, Q[i].arg2, Q[i].res);
+            fprintf(opt_file, "%-8s \t %-8s \t %-8s \t %-6s \n", Q[i].op, Q[i].arg1 ? Q[i].arg1 : "NULL", Q[i].arg2 ? Q[i].arg2 : "NULL", Q[i].res ? Q[i].res : "NULL");
         }
-        fprintf(opt_file, "_______________________________________________________________________________________________________\n");
         fclose(opt_file);
         printf("Optimized ICG written to CodeOpt/input.txt\n");
     }

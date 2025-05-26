@@ -67,7 +67,7 @@
 
 
 /* First part of user prologue.  */
-#line 2 "Yacc.y"
+#line 1 "Yacc.y"
 
     #include <stdio.h>
     #include <stdlib.h>
@@ -671,7 +671,7 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 465 "Yacc.y"
+#line 464 "Yacc.y"
 
     char *str;
 	struct ASTNode *NODE;
@@ -1162,16 +1162,16 @@ static const yytype_int8 yytranslate[] =
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int16 yyrline[] =
 {
-       0,   499,   499,   503,   504,   509,   510,   511,   523,   524,
-     531,   532,   533,   534,   535,   536,   542,   542,   542,   542,
-     553,   553,   553,   557,   557,   559,   559,   560,   560,   561,
-     561,   562,   565,   566,   569,   570,   571,   572,   575,   576,
-     577,   578,   579,   580,   581,   582,   583,   584,   585,   586,
-     587,   593,   594,   595,   596,   597,   598,   599,   600,   601,
-     602,   603,   604,   605,   606,   610,   611,   612,   613,   614,
-     615,   616,   617,   618,   619,   620,   621,   622,   623,   624,
-     625,   628,   629,   631,   632,   634,   636,   638,   641,   642,
-     645,   646
+       0,   498,   498,   502,   503,   508,   509,   510,   522,   523,
+     530,   531,   532,   533,   534,   535,   541,   541,   541,   541,
+     552,   552,   552,   556,   556,   558,   558,   559,   559,   560,
+     560,   561,   564,   565,   568,   569,   570,   571,   574,   575,
+     576,   577,   578,   579,   580,   581,   582,   583,   584,   585,
+     586,   592,   593,   594,   595,   596,   597,   598,   599,   600,
+     601,   602,   603,   604,   605,   609,   610,   611,   612,   613,
+     614,   615,   616,   617,   618,   619,   620,   621,   622,   623,
+     624,   627,   628,   630,   631,   633,   635,   637,   640,   641,
+     644,   645
 };
 #endif
 
@@ -2177,109 +2177,109 @@ yyreduce:
   switch (yyn)
     {
   case 2: /* Start: T_int T_main T_openParenthesis T_closedParanthesis openflower block_end_flower  */
-#line 499 "Yacc.y"
+#line 498 "Yacc.y"
                                                                                         {(yyval.NODE) = (yyvsp[0].NODE);}
 #line 2183 "y.tab.c"
     break;
 
   case 3: /* block_end_flower: stmt Multiple_stmts  */
-#line 503 "Yacc.y"
+#line 502 "Yacc.y"
                                                                                         {(yyval.NODE) = (yyvsp[-1].NODE);}
 #line 2189 "y.tab.c"
     break;
 
   case 4: /* block_end_flower: closeflower  */
-#line 504 "Yacc.y"
+#line 503 "Yacc.y"
                                                                                                                 {(yyval.NODE) = Construct_AST(NULL, NULL, ";"); }
 #line 2195 "y.tab.c"
     break;
 
   case 5: /* block: openflower block_end_flower  */
-#line 509 "Yacc.y"
+#line 508 "Yacc.y"
                                                                                 {(yyval.NODE) = (yyvsp[0].NODE);}
 #line 2201 "y.tab.c"
     break;
 
   case 6: /* block: stmt  */
-#line 510 "Yacc.y"
+#line 509 "Yacc.y"
                                                                                                                 {(yyval.NODE) = (yyvsp[0].NODE);}
 #line 2207 "y.tab.c"
     break;
 
   case 7: /* block: T_Semicolon  */
-#line 511 "Yacc.y"
+#line 510 "Yacc.y"
                                                                                                         {(yyval.NODE) = Construct_AST(NULL, NULL, ";"); }
 #line 2213 "y.tab.c"
     break;
 
   case 8: /* Multiple_stmts: stmt Multiple_stmts  */
-#line 523 "Yacc.y"
+#line 522 "Yacc.y"
                                                                                 {(yyval.NODE) = (yyvsp[-1].NODE);}
 #line 2219 "y.tab.c"
     break;
 
   case 9: /* Multiple_stmts: closeflower  */
-#line 524 "Yacc.y"
+#line 523 "Yacc.y"
                                                                                                         {(yyval.NODE) = Construct_AST(NULL, NULL, ";"); }
 #line 2225 "y.tab.c"
     break;
 
   case 10: /* stmt: expr T_Semicolon  */
-#line 531 "Yacc.y"
+#line 530 "Yacc.y"
                                                         {(yyval.NODE) = (yyvsp[-1].NODE); Display_tree((yyval.NODE)); fprintf(ast_tree_output, "\n");}
 #line 2231 "y.tab.c"
     break;
 
   case 11: /* stmt: if_stmt  */
-#line 532 "Yacc.y"
+#line 531 "Yacc.y"
                                                                         {(yyval.NODE) = (yyvsp[0].NODE); Display_tree((yyval.NODE)); fprintf(ast_tree_output, "\n");}
 #line 2237 "y.tab.c"
     break;
 
   case 12: /* stmt: while_stmt  */
-#line 533 "Yacc.y"
+#line 532 "Yacc.y"
                                                                 {(yyval.NODE) = (yyvsp[0].NODE); Display_tree((yyval.NODE));fprintf(ast_tree_output, "\n");}
 #line 2243 "y.tab.c"
     break;
 
   case 13: /* stmt: for_stmt  */
-#line 534 "Yacc.y"
+#line 533 "Yacc.y"
                                                                         {(yyval.NODE) = (yyvsp[0].NODE); Display_tree((yyval.NODE)); fprintf(ast_tree_output, "\n");}
 #line 2249 "y.tab.c"
     break;
 
   case 14: /* stmt: Assignment_stmt T_Semicolon  */
-#line 535 "Yacc.y"
+#line 534 "Yacc.y"
                                                 {(yyval.NODE) = (yyvsp[-1].NODE); Display_tree((yyval.NODE)); fprintf(ast_tree_output, "\n");}
 #line 2255 "y.tab.c"
     break;
 
   case 15: /* stmt: error T_Semicolon  */
-#line 536 "Yacc.y"
+#line 535 "Yacc.y"
                                                         {(yyval.NODE) = Construct_AST(NULL, NULL, ";"); }
 #line 2261 "y.tab.c"
     break;
 
   case 16: /* $@1: %empty  */
-#line 542 "Yacc.y"
+#line 541 "Yacc.y"
                                                                                {FOR_label();}
 #line 2267 "y.tab.c"
     break;
 
   case 17: /* $@2: %empty  */
-#line 542 "Yacc.y"
+#line 541 "Yacc.y"
                                                                                                                                           {FOR_Condition();}
 #line 2273 "y.tab.c"
     break;
 
   case 18: /* $@3: %empty  */
-#line 542 "Yacc.y"
+#line 541 "Yacc.y"
                                                                                                                                                                                                              {FOR_INC_Cond();}
 #line 2279 "y.tab.c"
     break;
 
   case 19: /* for_stmt: T_for T_openParenthesis expr_or_empty_with_semicolon_and_assignment $@1 expr_or_empty_with_semicolon_and_assignment $@2 expr_or_empty_with_assignment_and_closed_parent $@3 block  */
-#line 542 "Yacc.y"
+#line 541 "Yacc.y"
                                                                                                                                                                                                                                         {{ 	FOR_End();node* left;
 																																	node* right;
 																																	left = Construct_AST((yyvsp[-4].NODE), (yyvsp[-2].NODE), "Cond_Loopstmts");
@@ -2290,433 +2290,433 @@ yyreduce:
     break;
 
   case 20: /* $@4: %empty  */
-#line 553 "Yacc.y"
+#line 552 "Yacc.y"
                      {While_Loop_Label();}
 #line 2296 "y.tab.c"
     break;
 
   case 21: /* $@5: %empty  */
-#line 553 "Yacc.y"
+#line 552 "Yacc.y"
                                                                                       {While_loop_cond();}
 #line 2302 "y.tab.c"
     break;
 
   case 22: /* while_stmt: T_while $@4 T_openParenthesis expr T_closedParanthesis $@5 block  */
-#line 553 "Yacc.y"
+#line 552 "Yacc.y"
                                                                                                                                         {While_END();(yyval.NODE) = Construct_AST((yyvsp[-4].str), (yyvsp[-2].str), "While"); }
 #line 2308 "y.tab.c"
     break;
 
   case 23: /* $@6: %empty  */
-#line 557 "Yacc.y"
+#line 556 "Yacc.y"
                                                           {IFSTMT();}
 #line 2314 "y.tab.c"
     break;
 
   case 24: /* if_stmt: T_if T_openParenthesis expr T_closedParanthesis $@6 block elseif_else_empty  */
-#line 557 "Yacc.y"
+#line 556 "Yacc.y"
                                                                                               {(yyval.NODE) = Construct_AST((yyvsp[-4].NODE), (yyvsp[-1].NODE), "IF");}
 #line 2320 "y.tab.c"
     break;
 
   case 25: /* $@7: %empty  */
-#line 559 "Yacc.y"
+#line 558 "Yacc.y"
                                                                            {;Elif();}
 #line 2326 "y.tab.c"
     break;
 
   case 26: /* elseif_else_empty: T_else T_if T_openParenthesis expr T_closedParanthesis $@7 block elseif_else_empty  */
-#line 559 "Yacc.y"
+#line 558 "Yacc.y"
                                                                                                               {(yyval.NODE) = Construct_AST((yyvsp[-4].NODE), (yyvsp[-1].NODE), "ELSEIF"); }
 #line 2332 "y.tab.c"
     break;
 
   case 27: /* $@8: %empty  */
-#line 560 "Yacc.y"
+#line 559 "Yacc.y"
                                                  {if_else_cleanup();}
 #line 2338 "y.tab.c"
     break;
 
   case 28: /* elseif_else_empty: T_else $@8 Multiple_stmts_not_if  */
-#line 560 "Yacc.y"
+#line 559 "Yacc.y"
                                                                                             {(yyval.NODE) = (yyvsp[0].NODE);}
 #line 2344 "y.tab.c"
     break;
 
   case 29: /* $@9: %empty  */
-#line 561 "Yacc.y"
+#line 560 "Yacc.y"
                                                  {if_else_cleanup();}
 #line 2350 "y.tab.c"
     break;
 
   case 30: /* elseif_else_empty: T_else $@9 openflower block_end_flower  */
-#line 561 "Yacc.y"
+#line 560 "Yacc.y"
                                                                                                   {(yyval.NODE) = (yyvsp[0].NODE);}
 #line 2356 "y.tab.c"
     break;
 
   case 31: /* elseif_else_empty: %empty  */
-#line 562 "Yacc.y"
+#line 561 "Yacc.y"
                                           {if_else_cleanup(); (yyval.NODE) = Construct_AST(NULL, NULL, ";"); }
 #line 2362 "y.tab.c"
     break;
 
   case 32: /* Multiple_stmts_not_if: stmt_without_if Multiple_stmts  */
-#line 565 "Yacc.y"
+#line 564 "Yacc.y"
                                                        {(yyval.NODE) = (yyvsp[-1].NODE);}
 #line 2368 "y.tab.c"
     break;
 
   case 33: /* Multiple_stmts_not_if: T_Semicolon  */
-#line 566 "Yacc.y"
+#line 565 "Yacc.y"
                                                      {(yyval.NODE) = Construct_AST(NULL, NULL, ";"); }
 #line 2374 "y.tab.c"
     break;
 
   case 34: /* stmt_without_if: expr T_Semicolon  */
-#line 569 "Yacc.y"
+#line 568 "Yacc.y"
                                                                                                                 {(yyval.NODE) = (yyvsp[-1].NODE);}
 #line 2380 "y.tab.c"
     break;
 
   case 35: /* stmt_without_if: Assignment_stmt T_Semicolon  */
-#line 570 "Yacc.y"
+#line 569 "Yacc.y"
                                                                                                                 {(yyval.NODE) = (yyvsp[-1].NODE);Display_tree((yyval.NODE));fprintf(ast_tree_output, "\n");}
 #line 2386 "y.tab.c"
     break;
 
   case 36: /* stmt_without_if: while_stmt  */
-#line 571 "Yacc.y"
+#line 570 "Yacc.y"
                                                                                                                                 {(yyval.NODE) = (yyvsp[0].NODE);}
 #line 2392 "y.tab.c"
     break;
 
   case 37: /* stmt_without_if: for_stmt  */
-#line 572 "Yacc.y"
+#line 571 "Yacc.y"
                                                                                                                                         {(yyval.NODE) = (yyvsp[0].NODE);}
 #line 2398 "y.tab.c"
     break;
 
   case 38: /* Assignment_stmt: idid T_AssignmentOperator expr  */
-#line 575 "Yacc.y"
+#line 574 "Yacc.y"
                                                        {push("=");TAC_assign();(yyval.NODE) = Construct_AST((yyvsp[-2].NODE),(yyvsp[0].NODE),"=");}
 #line 2404 "y.tab.c"
     break;
 
   case 39: /* Assignment_stmt: idid T_shortHand expr  */
-#line 576 "Yacc.y"
+#line 575 "Yacc.y"
                                                                 {push("se");TAC_assign();(yyval.NODE) = Construct_AST((yyvsp[-2].NODE),(yyvsp[0].NODE),"SE"); }
 #line 2410 "y.tab.c"
     break;
 
   case 40: /* Assignment_stmt: T_type idid T_AssignmentOperator expr_without_constants  */
-#line 577 "Yacc.y"
+#line 576 "Yacc.y"
                                                                                                   {push("=");strcpy(G_val,(yyvsp[-2].NODE)->token);TAC_assign_back();insert_in_st((yyvsp[-3].str), (yyvsp[-2].NODE)->token, st[top], "j");(yyval.NODE) = Construct_AST((yyvsp[-2].NODE),(yyvsp[0].NODE),"=");}
 #line 2416 "y.tab.c"
     break;
 
   case 41: /* Assignment_stmt: T_type idid T_AssignmentOperator sc  */
-#line 578 "Yacc.y"
+#line 577 "Yacc.y"
                                                                               {push("=");TAC_assign();insert_in_st((yyvsp[-3].str), (yyvsp[-2].NODE)->token, st[top], (yyvsp[0].NODE)->token);(yyval.NODE) = Construct_AST((yyvsp[-2].NODE),(yyvsp[0].NODE),"=");}
 #line 2422 "y.tab.c"
     break;
 
   case 42: /* Assignment_stmt: T_type idid T_AssignmentOperator nc  */
-#line 579 "Yacc.y"
+#line 578 "Yacc.y"
                                                                               {push("=");TAC_assign();insert_in_st((yyvsp[-3].str), (yyvsp[-2].NODE)->token, st[top], (yyvsp[0].NODE)->token);(yyval.NODE) = Construct_AST((yyvsp[-2].NODE),(yyvsp[0].NODE),"=");}
 #line 2428 "y.tab.c"
     break;
 
   case 43: /* Assignment_stmt: T_int idid T_AssignmentOperator expr_without_constants  */
-#line 580 "Yacc.y"
+#line 579 "Yacc.y"
                                                                                                  {push("=");strcpy(G_val,(yyvsp[-2].NODE)->token);TAC_assign_back();insert_in_st((yyvsp[-3].str), (yyvsp[-2].NODE)->token, st[top], "j");(yyval.NODE) = Construct_AST((yyvsp[-2].NODE),(yyvsp[0].NODE),"=");}
 #line 2434 "y.tab.c"
     break;
 
   case 44: /* Assignment_stmt: T_int idid T_AssignmentOperator nc  */
-#line 581 "Yacc.y"
+#line 580 "Yacc.y"
                                                                              {push("=");TAC_assign();insert_in_st((yyvsp[-3].str), (yyvsp[-2].NODE)->token, st[top], (yyvsp[0].NODE)->token);(yyval.NODE) = Construct_AST((yyvsp[-2].NODE),(yyvsp[0].NODE),"=");}
 #line 2440 "y.tab.c"
     break;
 
   case 45: /* Assignment_stmt: T_float idid T_AssignmentOperator expr_without_constants  */
-#line 582 "Yacc.y"
+#line 581 "Yacc.y"
                                                                                                    {push("=");strcpy(G_val,(yyvsp[-2].NODE)->token);TAC_assign_back();insert_in_st((yyvsp[-3].str), (yyvsp[-2].NODE)->token, st[top], "f");(yyval.NODE) = Construct_AST((yyvsp[-2].NODE),(yyvsp[0].NODE),"=");}
 #line 2446 "y.tab.c"
     break;
 
   case 46: /* Assignment_stmt: T_float idid T_AssignmentOperator nc  */
-#line 583 "Yacc.y"
+#line 582 "Yacc.y"
                                                                                {push("=");TAC_assign();insert_in_st((yyvsp[-3].str), (yyvsp[-2].NODE)->token, st[top], (yyvsp[0].NODE)->token);(yyval.NODE) = Construct_AST((yyvsp[-2].NODE),(yyvsp[0].NODE),"=");}
 #line 2452 "y.tab.c"
     break;
 
   case 47: /* Assignment_stmt: T_double idid T_AssignmentOperator expr_without_constants  */
-#line 584 "Yacc.y"
+#line 583 "Yacc.y"
                                                                                                     {push("=");strcpy(G_val,(yyvsp[-2].NODE)->token);TAC_assign_back();insert_in_st((yyvsp[-3].str), (yyvsp[-2].NODE)->token, st[top], "d");(yyval.NODE) = Construct_AST((yyvsp[-2].NODE),(yyvsp[0].NODE),"=");}
 #line 2458 "y.tab.c"
     break;
 
   case 48: /* Assignment_stmt: T_double idid T_AssignmentOperator nc  */
-#line 585 "Yacc.y"
+#line 584 "Yacc.y"
                                                                                 {push("=");TAC_assign();insert_in_st((yyvsp[-3].str), (yyvsp[-2].NODE)->token, st[top], (yyvsp[0].NODE)->token);(yyval.NODE) = Construct_AST((yyvsp[-2].NODE),(yyvsp[0].NODE),"=");}
 #line 2464 "y.tab.c"
     break;
 
   case 49: /* Assignment_stmt: T_char idid T_AssignmentOperator expr_without_constants  */
-#line 586 "Yacc.y"
+#line 585 "Yacc.y"
                                                                                                   {push("=");strcpy(G_val,(yyvsp[-2].NODE)->token);TAC_assign_back();insert_in_st((yyvsp[-3].str), (yyvsp[-2].NODE)->token, st[top], "c");(yyval.NODE) = Construct_AST((yyvsp[-2].NODE),(yyvsp[0].NODE),"=");}
 #line 2470 "y.tab.c"
     break;
 
   case 50: /* Assignment_stmt: T_char idid T_AssignmentOperator sc  */
-#line 587 "Yacc.y"
+#line 586 "Yacc.y"
                                                                               {push("=");TAC_assign();insert_in_st((yyvsp[-3].str), (yyvsp[-2].NODE)->token, st[top], (yyvsp[0].NODE)->token);(yyval.NODE) = Construct_AST((yyvsp[-2].NODE),(yyvsp[0].NODE),"=");}
 #line 2476 "y.tab.c"
     break;
 
   case 51: /* expr_without_constants: idid  */
-#line 593 "Yacc.y"
+#line 592 "Yacc.y"
                                                                                         {(yyval.NODE) = (yyvsp[0].NODE);}
 #line 2482 "y.tab.c"
     break;
 
   case 52: /* expr_without_constants: expr T_plus expr  */
-#line 594 "Yacc.y"
+#line 593 "Yacc.y"
                                                                                                         {push("+");TAC();(yyval.NODE) = Construct_AST((yyvsp[-2].NODE), (yyvsp[0].NODE), "+");}
 #line 2488 "y.tab.c"
     break;
 
   case 53: /* expr_without_constants: expr T_minus expr  */
-#line 595 "Yacc.y"
+#line 594 "Yacc.y"
                                                                                                         {push("-");TAC();(yyval.NODE) = Construct_AST((yyvsp[-2].NODE), (yyvsp[0].NODE), "-");}
 #line 2494 "y.tab.c"
     break;
 
   case 54: /* expr_without_constants: expr T_divide expr  */
-#line 596 "Yacc.y"
+#line 595 "Yacc.y"
                                                                                                 {push("/");TAC();(yyval.NODE) = Construct_AST((yyvsp[-2].NODE), (yyvsp[0].NODE), "/");}
 #line 2500 "y.tab.c"
     break;
 
   case 55: /* expr_without_constants: expr T_multiply expr  */
-#line 597 "Yacc.y"
+#line 596 "Yacc.y"
                                                                                                 {push("*");TAC();(yyval.NODE) = Construct_AST((yyvsp[-2].NODE), (yyvsp[0].NODE), "*");}
 #line 2506 "y.tab.c"
     break;
 
   case 56: /* expr_without_constants: expr T_mod expr  */
-#line 598 "Yacc.y"
+#line 597 "Yacc.y"
                                                                                                         {push("%");TAC();(yyval.NODE) = Construct_AST((yyvsp[-2].NODE), (yyvsp[0].NODE), "%");}
 #line 2512 "y.tab.c"
     break;
 
   case 57: /* expr_without_constants: expr T_LogicalAnd expr  */
-#line 599 "Yacc.y"
+#line 598 "Yacc.y"
                                                                                                 {push("&");TAC();(yyval.NODE) = Construct_AST((yyvsp[-2].NODE), (yyvsp[0].NODE), "&");}
 #line 2518 "y.tab.c"
     break;
 
   case 58: /* expr_without_constants: expr T_LogicalOr expr  */
-#line 600 "Yacc.y"
+#line 599 "Yacc.y"
                                                                                                 {push("|");TAC();(yyval.NODE) = Construct_AST((yyvsp[-2].NODE), (yyvsp[0].NODE), "|");}
 #line 2524 "y.tab.c"
     break;
 
   case 59: /* expr_without_constants: expr T_less expr  */
-#line 601 "Yacc.y"
+#line 600 "Yacc.y"
                                                                                                         {push("<");TAC();(yyval.NODE) = Construct_AST((yyvsp[-2].NODE), (yyvsp[0].NODE), "<");}
 #line 2530 "y.tab.c"
     break;
 
   case 60: /* expr_without_constants: expr T_less_equal expr  */
-#line 602 "Yacc.y"
+#line 601 "Yacc.y"
                                                                                                 {push("<=");TAC();(yyval.NODE) = Construct_AST((yyvsp[-2].NODE), (yyvsp[0].NODE), "<=");}
 #line 2536 "y.tab.c"
     break;
 
   case 61: /* expr_without_constants: expr T_greater expr  */
-#line 603 "Yacc.y"
+#line 602 "Yacc.y"
                                                                                                 {push(">");TAC();(yyval.NODE) = Construct_AST((yyvsp[-2].NODE), (yyvsp[0].NODE), ">");}
 #line 2542 "y.tab.c"
     break;
 
   case 62: /* expr_without_constants: expr T_greater_equal expr  */
-#line 604 "Yacc.y"
+#line 603 "Yacc.y"
                                                                                                 {push(">=");TAC();(yyval.NODE) = Construct_AST((yyvsp[-2].NODE), (yyvsp[0].NODE), ">=");}
 #line 2548 "y.tab.c"
     break;
 
   case 63: /* expr_without_constants: expr T_equal_equal expr  */
-#line 605 "Yacc.y"
+#line 604 "Yacc.y"
                                                                                                 {push("==");TAC();(yyval.NODE) = Construct_AST((yyvsp[-2].NODE), (yyvsp[0].NODE), "==");}
 #line 2554 "y.tab.c"
     break;
 
   case 64: /* expr_without_constants: expr T_not_equal expr  */
-#line 606 "Yacc.y"
+#line 605 "Yacc.y"
                                                                                                 {push("!=");TAC();(yyval.NODE) = Construct_AST((yyvsp[-2].NODE), (yyvsp[0].NODE), "!=");}
 #line 2560 "y.tab.c"
     break;
 
   case 65: /* expr: nc  */
-#line 610 "Yacc.y"
+#line 609 "Yacc.y"
                                                                                                                 {(yyval.NODE) = (yyvsp[0].NODE);}
 #line 2566 "y.tab.c"
     break;
 
   case 66: /* expr: sc  */
-#line 611 "Yacc.y"
+#line 610 "Yacc.y"
                                                                                                                 {(yyval.NODE) = (yyvsp[0].NODE);}
 #line 2572 "y.tab.c"
     break;
 
   case 67: /* expr: idid  */
-#line 612 "Yacc.y"
+#line 611 "Yacc.y"
                                                                                                                 {(yyval.NODE) = (yyvsp[0].NODE);}
 #line 2578 "y.tab.c"
     break;
 
   case 68: /* expr: expr T_plus expr  */
-#line 613 "Yacc.y"
+#line 612 "Yacc.y"
                                                                                                         {push("+");TAC();(yyval.NODE) = Construct_AST((yyvsp[-2].NODE), (yyvsp[0].NODE), "+");}
 #line 2584 "y.tab.c"
     break;
 
   case 69: /* expr: expr T_minus expr  */
-#line 614 "Yacc.y"
+#line 613 "Yacc.y"
                                                                                                         {push("-");TAC();(yyval.NODE) = Construct_AST((yyvsp[-2].NODE), (yyvsp[0].NODE), "-");}
 #line 2590 "y.tab.c"
     break;
 
   case 70: /* expr: expr T_divide expr  */
-#line 615 "Yacc.y"
+#line 614 "Yacc.y"
                                                                                                 {push("/");TAC();(yyval.NODE) = Construct_AST((yyvsp[-2].NODE), (yyvsp[0].NODE), "/");}
 #line 2596 "y.tab.c"
     break;
 
   case 71: /* expr: expr T_multiply expr  */
-#line 616 "Yacc.y"
+#line 615 "Yacc.y"
                                                                                                 {push("*");TAC();(yyval.NODE) = Construct_AST((yyvsp[-2].NODE), (yyvsp[0].NODE), "*");}
 #line 2602 "y.tab.c"
     break;
 
   case 72: /* expr: expr T_mod expr  */
-#line 617 "Yacc.y"
+#line 616 "Yacc.y"
                                                                                                         {push("%");TAC();(yyval.NODE) = Construct_AST((yyvsp[-2].NODE), (yyvsp[0].NODE), "%");}
 #line 2608 "y.tab.c"
     break;
 
   case 73: /* expr: expr T_LogicalAnd expr  */
-#line 618 "Yacc.y"
+#line 617 "Yacc.y"
                                                                                                 {push("&");TAC();(yyval.NODE) = Construct_AST((yyvsp[-2].NODE), (yyvsp[0].NODE), "&");}
 #line 2614 "y.tab.c"
     break;
 
   case 74: /* expr: expr T_LogicalOr expr  */
-#line 619 "Yacc.y"
+#line 618 "Yacc.y"
                                                                                                 {push("|");TAC();(yyval.NODE) = Construct_AST((yyvsp[-2].NODE), (yyvsp[0].NODE), "|");}
 #line 2620 "y.tab.c"
     break;
 
   case 75: /* expr: expr T_less expr  */
-#line 620 "Yacc.y"
+#line 619 "Yacc.y"
                                                                                                         {push("<");TAC();(yyval.NODE) = Construct_AST((yyvsp[-2].NODE), (yyvsp[0].NODE), "<");}
 #line 2626 "y.tab.c"
     break;
 
   case 76: /* expr: expr T_less_equal expr  */
-#line 621 "Yacc.y"
+#line 620 "Yacc.y"
                                                                                                 {push("<=");TAC();(yyval.NODE) = Construct_AST((yyvsp[-2].NODE), (yyvsp[0].NODE), "<=");}
 #line 2632 "y.tab.c"
     break;
 
   case 77: /* expr: expr T_greater expr  */
-#line 622 "Yacc.y"
+#line 621 "Yacc.y"
                                                                                                 {push(">");TAC();(yyval.NODE) = Construct_AST((yyvsp[-2].NODE), (yyvsp[0].NODE), ">");}
 #line 2638 "y.tab.c"
     break;
 
   case 78: /* expr: expr T_greater_equal expr  */
-#line 623 "Yacc.y"
+#line 622 "Yacc.y"
                                                                                                 {push(">=");TAC();(yyval.NODE) = Construct_AST((yyvsp[-2].NODE), (yyvsp[0].NODE), ">=");}
 #line 2644 "y.tab.c"
     break;
 
   case 79: /* expr: expr T_equal_equal expr  */
-#line 624 "Yacc.y"
+#line 623 "Yacc.y"
                                                                                                 {push("==");TAC();(yyval.NODE) = Construct_AST((yyvsp[-2].NODE), (yyvsp[0].NODE), "==");}
 #line 2650 "y.tab.c"
     break;
 
   case 80: /* expr: expr T_not_equal expr  */
-#line 625 "Yacc.y"
+#line 624 "Yacc.y"
                                                                                                 {push("!=");TAC();(yyval.NODE) = Construct_AST((yyvsp[-2].NODE), (yyvsp[0].NODE), "!=");}
 #line 2656 "y.tab.c"
     break;
 
   case 81: /* expr_or_empty_with_semicolon_and_assignment: expr_or_empty T_Semicolon  */
-#line 628 "Yacc.y"
+#line 627 "Yacc.y"
                                                                                         {(yyval.NODE) = (yyvsp[-1].NODE);}
 #line 2662 "y.tab.c"
     break;
 
   case 82: /* expr_or_empty_with_semicolon_and_assignment: Assignment_stmt T_Semicolon  */
-#line 629 "Yacc.y"
+#line 628 "Yacc.y"
                                                                                                                                 {(yyval.NODE) = (yyvsp[-1].NODE);}
 #line 2668 "y.tab.c"
     break;
 
   case 83: /* expr_or_empty_with_assignment_and_closed_parent: expr_or_empty T_closedParanthesis  */
-#line 631 "Yacc.y"
+#line 630 "Yacc.y"
                                                                                                                                         {(yyval.NODE) = (yyvsp[-1].NODE);}
 #line 2674 "y.tab.c"
     break;
 
   case 84: /* expr_or_empty_with_assignment_and_closed_parent: Assignment_stmt T_closedParanthesis  */
-#line 632 "Yacc.y"
+#line 631 "Yacc.y"
                                                                                                                                                                                 {(yyval.NODE) = (yyvsp[-1].NODE);}
 #line 2680 "y.tab.c"
     break;
 
   case 85: /* idid: T_identifier  */
-#line 634 "Yacc.y"
+#line 633 "Yacc.y"
                                                                                                 {push((char*)yylval.str);(yyval.NODE) = Construct_AST(NULL, NULL, (char*)yylval.str); }
 #line 2686 "y.tab.c"
     break;
 
   case 86: /* sc: T_stringLiteral  */
-#line 636 "Yacc.y"
+#line 635 "Yacc.y"
                                                                                                 {push((char*)yylval.str);(yyval.NODE) = Construct_AST(NULL, NULL, (char*)yylval.str); }
 #line 2692 "y.tab.c"
     break;
 
   case 87: /* nc: T_numericConstants  */
-#line 638 "Yacc.y"
+#line 637 "Yacc.y"
                                                                                         {push((char*)yylval.str);(yyval.NODE) = Construct_AST(NULL, NULL, (char*)yylval.str); }
 #line 2698 "y.tab.c"
     break;
 
   case 88: /* expr_or_empty: expr  */
-#line 641 "Yacc.y"
+#line 640 "Yacc.y"
                                                                                                 {(yyval.NODE) = (yyvsp[0].NODE);}
 #line 2704 "y.tab.c"
     break;
 
   case 89: /* expr_or_empty: %empty  */
-#line 642 "Yacc.y"
+#line 641 "Yacc.y"
                                   {(yyval.NODE) = Construct_AST(NULL, NULL, ";"); }
 #line 2710 "y.tab.c"
     break;
 
   case 90: /* openflower: T_openFlowerBracket  */
-#line 645 "Yacc.y"
+#line 644 "Yacc.y"
                                 {}
 #line 2716 "y.tab.c"
     break;
 
   case 91: /* closeflower: T_closedFlowerBracket  */
-#line 646 "Yacc.y"
+#line 645 "Yacc.y"
                                    {}
 #line 2722 "y.tab.c"
     break;
@@ -2946,7 +2946,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 649 "Yacc.y"
+#line 648 "Yacc.y"
 
 
 void yyerror(const char *str) 
@@ -3054,6 +3054,7 @@ int main()
         printf("Could not open output file, aborting\n");
         exit(1);
     }
+	// Display_tree(tree)
     yyparse();				//parse through the input. This step effectively also fills the symbol table, generates the AST and computes & prints ICG.
     
     printf("\n**************************************Symbol Table****************************************\n");
@@ -3078,13 +3079,10 @@ int main()
     }
     else
     {
-        fprintf(opt_file, "Optimized Intermediate Code Generation (Quadruple Form):\n");
-        fprintf(opt_file, "_______________________________________________________________________________________________________\n");
         for(int i=0; i<quadindex; i++)
         {
-            fprintf(opt_file, "%-8s \t %-8s \t %-8s \t %-6s \n", Q[i].op, Q[i].arg1, Q[i].arg2, Q[i].res);
+            fprintf(opt_file, "%-8s \t %-8s \t %-8s \t %-6s \n", Q[i].op, Q[i].arg1 ? Q[i].arg1 : "NULL", Q[i].arg2 ? Q[i].arg2 : "NULL", Q[i].res ? Q[i].res : "NULL");
         }
-        fprintf(opt_file, "_______________________________________________________________________________________________________\n");
         fclose(opt_file);
         printf("Optimized ICG written to CodeOpt/input.txt\n");
     }
