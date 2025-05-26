@@ -134,6 +134,11 @@ fout.write("\n")
 fout.write(" After dead code elimination - \n")
 fout.write("------------------------------\n")
 
+# Add this new functionality to write dead code elimination results to Assembly/input.txt
+assembly_file = open("../Assembly/input.txt", "w")
+assembly_file.write("After dead code elimination - \n")
+assembly_file.write("------------------------------\n")
+
 for i in constantFoldedList:
     if(i[0]=="="):
         pass
@@ -141,24 +146,31 @@ for i in constantFoldedList:
         output_line = f"{i[3]} = {i[1]} {i[0]} {i[2]}"
         print(output_line)
         fout.write(output_line + "\n")
+        assembly_file.write(output_line + "\n")  # Write to assembly file
     elif(i[0] in ["if","goto","label","not"]):
         if(i[0]=="if"):
             output_line = f"{i[0]} {i[1]} goto {i[3]}"
             print(output_line)
             fout.write(output_line + "\n")
+            assembly_file.write(output_line + "\n")  # Write to assembly file
         if(i[0]=="goto"):
             output_line = f"{i[0]} {i[3]}"
             print(output_line)
             fout.write(output_line + "\n")
+            assembly_file.write(output_line + "\n")  # Write to assembly file
         if(i[0]=="label"):
             output_line = f"{i[3]} :"
             print(output_line)
             fout.write(output_line + "\n")
+            assembly_file.write(output_line + "\n")  # Write to assembly file
         if(i[0]=="not"):
             output_line = f"{i[3]} = {i[0]} {i[1]}"
             print(output_line)
             fout.write(output_line + "\n")
+            assembly_file.write(output_line + "\n")  # Write to assembly file
 
 f.close()
 fout.close()
-print(f"\nResults have been written to out.txt")
+assembly_file.close()  # Close the assembly file
+print(f"\nResults have been written to output.txt")
+print(f"Dead code elimination results have been written to Assembly/input.txt")
