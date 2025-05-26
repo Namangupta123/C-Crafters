@@ -1,0 +1,42 @@
+Quadruple form after Constant Folding -
+-------------------------------------
+= 3 NULL a
+= 8 NULL T0
+= 8 NULL b
++ 3 b T1
+= T1 NULL c
+* c e 2
+= T2 NULL d
+= 8 NULL a
+= 16 NULL T3
+= 16 NULL f
+not x NULL T4
+if T4 NULL L0
++ 8 e T5
+= T5 NULL a
+Label NULL NULL L0
+
+Constant folded expression - 
+--------------------
+a = 3
+T0 = 8
+b = 8
+T1 = 3 + b
+c = T1
+2 = c * e
+d = T2
+a = 8
+T3 = 16
+f = 16
+T4 = not x
+if T4 goto L0
+T5 = 8 + e
+a = T5
+
+ After dead code elimination - 
+------------------------------
+T1 = 3 + b
+2 = c * e
+T4 = not x
+if T4 goto L0
+T5 = 8 + e
