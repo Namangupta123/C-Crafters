@@ -1,4 +1,4 @@
-Quadruple form after Constant Folding -
+Quadruple form after Constant Folding - 
 -------------------------------------
 = 3 NULL a
 = 8 NULL T0

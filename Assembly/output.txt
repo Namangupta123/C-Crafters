@@ -1,0 +1,10 @@
+Start:
+LD R1 =
+MOV R0 R1
+MOV R2 R1
+ST * R2
+MOV R2 R1
+ST x R2
+MOV R0 R1
+ST = R1
+ST + R0

@@ -9,6 +9,7 @@ C-Crafters is a comprehensive mini compiler for a subset of C/C++ language, buil
 - Abstract Syntax Tree (AST) Generation : Creates hierarchical representation of program structure
 - Intermediate Code Generation (ICG) : Produces three-address code
 - Code Optimization : Implements constant folding and dead code elimination
+- Assembly Code Generation : Converts optimized code to machine-specific instructions
 
 ### Supported C/C++ Features
 - Data types: int, float, char, void

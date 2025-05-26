@@ -6,7 +6,7 @@ constantFoldedList = []
 
 print("Quadruple form after Constant Folding - ")
 print("-------------------------------------")
-fout.write("Quadruple form after Constant Folding - n")
+fout.write("Quadruple form after Constant Folding - \n")
 fout.write("-------------------------------------\n")
 
 for i in list_of_lines:
@@ -134,6 +134,8 @@ fout.write("\n")
 fout.write(" After dead code elimination - \n")
 fout.write("------------------------------\n")
 
+assembly_file = open("../Assembly/input.txt", "w")
+
 for i in constantFoldedList:
     if(i[0]=="="):
         pass
@@ -141,24 +143,31 @@ for i in constantFoldedList:
         output_line = f"{i[3]} = {i[1]} {i[0]} {i[2]}"
         print(output_line)
         fout.write(output_line + "\n")
+        assembly_file.write(output_line + "\n")
     elif(i[0] in ["if","goto","label","not"]):
         if(i[0]=="if"):
             output_line = f"{i[0]} {i[1]} goto {i[3]}"
             print(output_line)
             fout.write(output_line + "\n")
+            assembly_file.write(output_line + "\n")
         if(i[0]=="goto"):
             output_line = f"{i[0]} {i[3]}"
             print(output_line)
             fout.write(output_line + "\n")
+            assembly_file.write(output_line + "\n")
         if(i[0]=="label"):
             output_line = f"{i[3]} :"
             print(output_line)
             fout.write(output_line + "\n")
+            assembly_file.write(output_line + "\n")
         if(i[0]=="not"):
             output_line = f"{i[3]} = {i[0]} {i[1]}"
             print(output_line)
             fout.write(output_line + "\n")
+            assembly_file.write(output_line + "\n")
 
 f.close()
 fout.close()
-print(f"\nResults have been written to out.txt")
+assembly_file.close()
+print(f"\nResults have been written to output.txt")
+print(f"Dead code elimination results have been written to Assembly/input.txt")

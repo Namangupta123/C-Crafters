@@ -747,27 +747,47 @@ void icg_optimize()
 
 int main()
 {
- 	ast_tree_output = fopen("ast_tree_output.txt", "w");
-	if(ast_tree_output == NULL)
-	{
-		printf("Could not open output file, aborting\n");
-		exit(1);
-	}
-	yyparse();				//parse through the input. This step effectively also fills the symbol table, generates the AST and computes & prints ICG.
-	
-	printf("\n**************************************Symbol Table****************************************\n");
-	
-	display();				//display the symbol table. The function is defined in lex.l
-	
-	printf("\n*************************************************************************************************\n");
-	
-	printf("Intermediate Code Generation (Quadraple Form):\n");
-	symboldisplay();
+    ast_tree_output = fopen("ast_tree_output.txt", "w");
+    if(ast_tree_output == NULL)
+    {
+        printf("Could not open output file, aborting\n");
+        exit(1);
+    }
+    yyparse();				//parse through the input. This step effectively also fills the symbol table, generates the AST and computes & prints ICG.
+    
+    printf("\n**************************************Symbol Table****************************************\n");
+    
+    display();				//display the symbol table. The function is defined in lex.l
+    
+    printf("\n*************************************************************************************************\n");
+    
+    printf("Intermediate Code Generation (Quadraple Form):\n");
+    symboldisplay();
 
-	/*icg_optimize();
+    icg_optimize();
 
-	printf("After Optimization:\n");
-	symboldisplay();*/
-	fclose(ast_tree_output);
-	return 0;
+    printf("After Optimization:\n");
+    symboldisplay();
+    
+    // Add this new functionality to write optimized ICG to file
+    FILE *opt_file = fopen("../CodeOpt/input.txt", "w");
+    if(opt_file == NULL)
+    {
+        printf("Error: Could not open CodeOpt/input.txt for writing\n");
+    }
+    else
+    {
+        fprintf(opt_file, "Optimized Intermediate Code Generation (Quadruple Form):\n");
+        fprintf(opt_file, "_______________________________________________________________________________________________________\n");
+        for(int i=0; i<quadindex; i++)
+        {
+            fprintf(opt_file, "%-8s \t %-8s \t %-8s \t %-6s \n", Q[i].op, Q[i].arg1, Q[i].arg2, Q[i].res);
+        }
+        fprintf(opt_file, "_______________________________________________________________________________________________________\n");
+        fclose(opt_file);
+        printf("Optimized ICG written to CodeOpt/input.txt\n");
+    }
+    
+    fclose(ast_tree_output);
+    return 0;
 }
