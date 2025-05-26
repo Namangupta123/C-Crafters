@@ -18,7 +18,7 @@ C-Crafters is a comprehensive mini compiler for a subset of C/C++ language, buil
 
 ## Project Structure
 ```
-├── AST/                         # Abstract Syntax Tree generation
+├── AST/                        # Abstract Syntax Tree generation
 │   ├── ast.l                   # Lexical analyzer for AST
 │   ├── ast.y                   # YACC grammar for AST generation
 │   └── input.cpp               # Sample input file
@@ -38,7 +38,7 @@ C-Crafters is a comprehensive mini compiler for a subset of C/C++ language, buil
 │   ├── sym.y                   # YACC grammar for symbol table
 │   └── input.cpp               # Sample input file
 └── Assembly/                   # Assembly code generation and handling
-    ├── main.py        # Python script to generate assembly code
+    ├── main.py                 # Python script to generate assembly code
     ├── input.txt               # Intermediate code input
     └── output.txt              # Generated assembly code output
 ```
@@ -127,6 +127,12 @@ cd ICG
 cd CodeOpt
 python3 main.py
 ```
+6. Assembly Code Generation
+```
+cd Assembly
+python3 main.py
+```
+
 ## Example Workflow
 1. Write a C/C++ program in input.cpp
 2. Run the lexical analyzer to tokenize the code
@@ -134,23 +140,22 @@ python3 main.py
 4. Create an abstract syntax tree to represent the program structure
 5. Generate intermediate code
 6. Apply optimizations to the intermediate code
+7. Generate the final optimized code
 
 ## Limitations
 - Supports only a subset of C/C++ language features
 - Limited error handling and recovery
-- No machine code generation (stops at optimized intermediate code)
 
 ## Future Enhancements
 - Support for more C/C++ features (structs, classes, pointers)
 - Enhanced error reporting and recovery
 - More optimization techniques
-- Backend for machine code generation
 
 ## Contributors
-- Aryan Shorya
-- Diya Gupta
-- Naman Gupta
-- Riya Vihan
+- Aryan Shorya (Team Lead | AST Generator and Assembly Code Generator)
+- Diya Gupta (Lexical Analyzer)
+- Naman Gupta (Code Optimizer and Intermediate Code Generator)
+- Riya Vihan (Symbol Table Generator)
 
 ## Acknowledgment
 This project was developed as part of a compiler design course/project.
